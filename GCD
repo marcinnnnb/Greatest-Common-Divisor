@@ -1,0 +1,37 @@
+*Istnieje również funkcja GDC dla Largest Common Divisor 
+*There is an function module to find GCD
+
+Report zmba_nwd.
+
+*Program do obliczania Największego Wspólnego Dzielnika
+*Program which allows us to find Greatest Common Divisor
+
+PARAMETERS: pa_num1 TYPE i OBLIGATORY, 
+            pa_num2 TYPE I OBLIGATORY.
+            
+DATA: lv_min TYPE i, 
+      lv_n1 TYPE i,  
+      lv_n2 TYPE i.
+
+
+*Sprawdzamy, która z podanych dwóch liczb jest mniejsza
+*In this step, we are checking, which number is greater
+
+IF pa_num1 < pa_num2. 
+  lv_min = pa_num1.
+ELSE.
+lv_min = pa_num2.
+ENDIF.
+
+*Szukamy NWD 
+*GCD searching
+
+WHILE ( lv_min >= 1 ).
+  lv_n1 = pa_num1 MOD lv_min. 
+  lv_n2 = pa_num2 MOD lv_min.
+    IF lv_n1 = 0 and lv_n2 = 0.
+  WRITE: ‘Największy wspólny dzielnik liczb: ‘, pa_num1, ‘i’, pa_num2, ‘to’, lv_min.
+    EXIT. 
+    ENDIF.
+  lv_min = lv_min – 1. 
+ENDWHILE.
